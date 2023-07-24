@@ -31,10 +31,10 @@ public class IMC {
             System.out.println("IMC es: " + imc);
             System.out.println("Normal");
         } else if (imc >= 25 && imc <= 29.99) {
-            System.out.println("IMC es: " + Math.round(imc));
+            System.out.println("IMC es: " + imc);
             System.out.println("Sobre peso");
         } else if (imc >= 30.0) {
-            System.out.println("IMC es: " + Math.round(imc));
+            System.out.println("IMC es: " + imc);
             System.out.println("Obesidad");
         }
     }
