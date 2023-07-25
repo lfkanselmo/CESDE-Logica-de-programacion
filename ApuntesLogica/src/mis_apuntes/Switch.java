@@ -21,6 +21,7 @@ public class Switch {
         int opcion;
         double resultado;
         int num1 = 0, num2 = 0;
+        
 
         do {
             try {
@@ -28,9 +29,9 @@ public class Switch {
                 num1 = read.nextInt();
                 pass = true;
             } catch (InputMismatchException e) {
-                System.out.println("Valor ingresado en número 1 no válido");
+                System.out.println(e.getMessage());
                 pass = false;
-                num1 = 0;
+                num1 = -1;
             }
 
         } while (pass == false);
@@ -41,7 +42,7 @@ public class Switch {
                 num2 = read.nextInt();
                 pass = true;
             } catch (InputMismatchException e) {
-                System.out.println("Valor ingresado en número 2 no válido");
+                System.out.println(e.getMessage());
                 pass = false;
                 num2 = -1;
             }
