@@ -59,5 +59,7 @@ public class IfElse {
         //realizar siguiente operacion num1 % num2, explicar el resultado
         System.out.println("El modulo de " + num1 + " % " + num2 + " es: " + (num1%num2));
         System.out.println("El modulo es lo que sobra de hacer la división del primer número en el segundo número");
+        
+        System.out.println(3.4%2);
     }
 }

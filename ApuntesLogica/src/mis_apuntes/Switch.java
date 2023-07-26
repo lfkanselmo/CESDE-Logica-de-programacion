@@ -14,42 +14,27 @@ import java.util.Scanner;
 public class Switch {
 
     static Scanner read = new Scanner(System.in).useDelimiter("\n");
+    static boolean pass = true;
 
     public static void main(String[] args) {
 
-        boolean pass = true;
         int opcion;
         double resultado;
         int num1 = 0, num2 = 0;
-        
 
+        num1 = validation();
+        num2 = validation();
+
+        menu();
+
+    }
+
+    //Metodo para el menú
+    public static void menu() {
         do {
-            try {
-                System.out.println("Ingrese número 1: ");
-                num1 = read.nextInt();
-                pass = true;
-            } catch (InputMismatchException e) {
-                System.out.println(e.getMessage());
-                pass = false;
-                num1 = -1;
-            }
 
-        } while (pass == false);
+            pass = false;
 
-        do {
-            try {
-                System.out.println("Ingrese número 2: ");
-                num2 = read.nextInt();
-                pass = true;
-            } catch (InputMismatchException e) {
-                System.out.println(e.getMessage());
-                pass = false;
-                num2 = -1;
-            }
-
-        } while (pass == false);
-
-        do {
             System.out.println("Bievenido");
             System.out.println("Elija una opción: ");
             System.out.println("1. suma");
@@ -67,13 +52,46 @@ public class Switch {
 
             switch (opcion) {
                 case 1:
-                    
+                    sumar();
+                    break;
+                case 2:
+                    restar();
+                    break;
+                case 3:
+                    multi();
+                    break;
+                case 4:
+                    divi();
+                    break;
+                case 5:
+                    pass = true;
+                default:
+                    System.out.println("Opciòn no valida, intente de nuevo");
+                    break;
 
             }
 
         } while (pass == false);
     }
-    
-    
+
+    //Función para validar ingreso de número
+    public static int validation() {
+        int num = 0;
+
+        do {
+            try {
+                System.out.println("Ingrese número: ");
+                num = read.nextInt();
+                pass = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Valor ingresado no númerico. Intente de nuevo");
+                pass = false;
+                read.next();
+            }
+
+        } while (pass == false);
+
+        return num;
+    }
 
 }
