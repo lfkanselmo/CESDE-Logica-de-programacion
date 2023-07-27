@@ -39,6 +39,8 @@ public class CalculadoraMejorada {
 
             if (user.equals(usuario)) {
                 if (password.equals(contrasenha)) {
+                    System.out.println("Bievenido!");
+                    System.out.println("");
                     menu();
                     intentos = 0;
                 } else {
@@ -47,7 +49,8 @@ public class CalculadoraMejorada {
                     System.out.println("intentos restantes: " + intentos);
                 }
             } else {
-                System.out.println("Error en las credenciales. Acceso a la calculadora denegado!");
+                System.out.println("Error en las credenciales, usuario ingresado no existe."
+                        + " Acceso a la calculadora denegado!");
                 intentos--;
                 System.out.println("intentos restantes: " + intentos);
             }

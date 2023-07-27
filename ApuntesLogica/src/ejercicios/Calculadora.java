@@ -82,12 +82,15 @@ public class Calculadora {
         
         if (user.equals(usuario)) {
             if (password.equals(contrasenha)) {
+                System.out.println("Bievenido!");
+                System.out.println("");
                 menu();
             } else {
                 System.out.println("Contraseña incorrecta...");
             }
         } else {
-            System.out.println("Error en las credenciales. Acceso a la calculadora denegado!");
+            System.out.println("Error en las credenciales, usuario ingresado no existe."
+                    + " Acceso a la calculadora denegado!");
         }
         
     }
