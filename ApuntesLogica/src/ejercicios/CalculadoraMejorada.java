@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package mis_apuntes;
+package ejercicios;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -11,26 +11,55 @@ import java.util.Scanner;
  *
  * @author Krausser
  */
-public class Switch {
+public class CalculadoraMejorada {
 
     static Scanner read = new Scanner(System.in).useDelimiter("\n");
     static boolean pass = false;
 
     public static void main(String[] args) {
 
-        int num1 = 0, num2 = 0;
+        inicioSesion();
 
-        num1 = validation("Ingrese número 1: ");
-        num2 = validation("Ingrese número 2: ");
+    }
 
-        menu(num1, num2);
+    //Metodo para iniciar sesión
+    public static void inicioSesion() {
+        String user = "admin";
+        String password = "123456";
+        int intentos = 3;
+
+        do {
+            System.out.println("");
+            System.out.println("Ingrese usuario: ");
+            String usuario = read.nextLine();
+            System.out.println("");
+            System.out.println("Ingrese contraseña: ");
+            String contrasenha = read.nextLine();
+            System.out.println("");
+
+            if (user.equals(usuario)) {
+                if (password.equals(contrasenha)) {
+                    menu();
+                    intentos = 0;
+                } else {
+                    System.out.println("Contraseña incorrecta...");
+                    intentos--;
+                    System.out.println("intentos restantes: " + intentos);
+                }
+            } else {
+                System.out.println("Error en las credenciales. Acceso a la calculadora denegado!");
+                intentos--;
+                System.out.println("intentos restantes: " + intentos);
+            }
+        } while (intentos > 0);
 
     }
 
     //Metodo para el menú
-    public static void menu(int num1, int num2) {
+    public static void menu() {
 
-        int opcion;
+        int opcion, num1 = 0, num2 = 0;
+
         do {
 
             System.out.println("");
@@ -44,6 +73,12 @@ public class Switch {
 
             opcion = validation("Elija una opción: ");
             System.out.println("");
+
+            if (opcion > 0 && opcion < 5) {
+                num1 = validation("Ingrese número 1: ");
+                num2 = validation("Ingrese número 2: ");
+            }
+
             pass = false;
 
             switch (opcion) {
@@ -60,13 +95,12 @@ public class Switch {
                     divi(num1, num2);
                     break;
                 case 5:
-                    System.out.println("Calculadora finalizada. Adios");                    
+                    System.out.println("Calculadora finalizada. Adios");
                     pass = true;
                     break;
                 default:
                     System.out.println("Opción no valida, intente de nuevo");
                     break;
-
             }
 
         } while (pass == false);
@@ -94,13 +128,13 @@ public class Switch {
     public static void divi(int num1, int num2) {
         double div;
 
-            div = (double) ( (double)(num1) / (double) (num2));
-            System.out.println(num1 + " / " + num2 + " = " + div);
-            if(num2 == 0){
-                System.out.println("No se puede dividir entre cero. Resultado indeterminado");
-            }
-            System.out.println("");
- 
+        div = ((double) (num1) / (double) (num2));
+        System.out.println(num1 + " / " + num2 + " = " + div);
+        if (num2 == 0) {
+            System.out.println("No se puede dividir entre cero. Resultado indeterminado");
+        }
+        System.out.println("");
+
     }
 
     //Función para validar ingreso de número
