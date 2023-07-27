@@ -14,59 +14,57 @@ import java.util.Scanner;
 public class Switch {
 
     static Scanner read = new Scanner(System.in).useDelimiter("\n");
-    static boolean pass = true;
+    static boolean pass = false;
 
     public static void main(String[] args) {
 
-        int opcion;
-        double resultado;
         int num1 = 0, num2 = 0;
 
-        num1 = validation();
-        num2 = validation();
+        num1 = validation("Ingrese número 1: ");
+        num2 = validation("Ingrese número 2: ");
 
-        menu();
+        menu(num1, num2);
 
     }
 
     //Metodo para el menú
-    public static void menu() {
+    public static void menu(int num1, int num2) {
+
+        int opcion;
         do {
 
-            pass = false;
-
-            System.out.println("Bievenido");
-            System.out.println("Elija una opción: ");
+            System.out.println("");
+            System.out.println("Seleccione operación deseada");
             System.out.println("1. suma");
             System.out.println("2. resta");
             System.out.println("3. multiplicación");
             System.out.println("4. división");
             System.out.println("5. salir");
+            System.out.println("");
 
-            try {
-                opcion = read.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Válor ingresado no valido");
-                opcion = -1;
-            }
+            opcion = validation("Elija una opción: ");
+            System.out.println("");
+            pass = false;
 
             switch (opcion) {
                 case 1:
-                    sumar();
+                    sumar(num1, num2);
                     break;
                 case 2:
-                    restar();
+                    restar(num1, num2);
                     break;
                 case 3:
-                    multi();
+                    multi(num1, num2);
                     break;
                 case 4:
-                    divi();
+                    divi(num1, num2);
                     break;
                 case 5:
+                    System.out.println("Calculadora finalizada. Adios");                    
                     pass = true;
+                    break;
                 default:
-                    System.out.println("Opciòn no valida, intente de nuevo");
+                    System.out.println("Opción no valida, intente de nuevo");
                     break;
 
             }
@@ -74,13 +72,44 @@ public class Switch {
         } while (pass == false);
     }
 
+    //Función para sumar
+    public static void sumar(int num1, int num2) {
+        System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
+        System.out.println("");
+    }
+
+    //Función para restar
+    public static void restar(int num1, int num2) {
+        System.out.println(num1 + " - " + num2 + " = " + (num1 - num2));
+        System.out.println("");
+    }
+
+    //Función para multiplicar
+    public static void multi(int num1, int num2) {
+        System.out.println(num1 + " * " + num2 + " = " + (num1 * num2));
+        System.out.println("");
+    }
+
+    //Función para dividir
+    public static void divi(int num1, int num2) {
+        double div;
+
+            div = (double) ( (double)(num1) / (double) (num2));
+            System.out.println(num1 + " / " + num2 + " = " + div);
+            if(num2 == 0){
+                System.out.println("No se puede dividir entre cero. Resultado indeterminado");
+            }
+            System.out.println("");
+ 
+    }
+
     //Función para validar ingreso de número
-    public static int validation() {
+    public static int validation(String cadena) {
         int num = 0;
 
         do {
             try {
-                System.out.println("Ingrese número: ");
+                System.out.println(cadena);
                 num = read.nextInt();
                 pass = true;
             } catch (InputMismatchException e) {
