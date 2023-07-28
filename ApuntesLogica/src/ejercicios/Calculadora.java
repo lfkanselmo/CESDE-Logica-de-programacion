@@ -73,6 +73,7 @@ public class Calculadora {
         String user = "admin";
         String password = "123456";
         
+        
         System.out.println("********** INICIAR SESION **********");
         System.out.println("Ingrese usuario: ");
         String usuario = read.nextLine();
