@@ -29,6 +29,7 @@ public class CalculadoraMejorada {
         int intentos = 3;
 
         do {
+            System.out.println("********** INICIAR SESION **********");
             System.out.println("");
             System.out.println("Ingrese usuario: ");
             String usuario = read.nextLine();
@@ -39,7 +40,7 @@ public class CalculadoraMejorada {
 
             if (user.equals(usuario)) {
                 if (password.equals(contrasenha)) {
-                    System.out.println("Bievenido!");
+                    System.out.println("********** Bievenido! **********");
                     System.out.println("");
                     menu();
                     intentos = 0;
