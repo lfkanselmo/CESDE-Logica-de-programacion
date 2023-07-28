@@ -111,18 +111,21 @@ public class CalculadoraMejorada {
 
     //Función para sumar
     public static void sumar(int num1, int num2) {
+        System.out.println("");
         System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
         System.out.println("");
     }
 
     //Función para restar
     public static void restar(int num1, int num2) {
+        System.out.println("");
         System.out.println(num1 + " - " + num2 + " = " + (num1 - num2));
         System.out.println("");
     }
 
     //Función para multiplicar
     public static void multi(int num1, int num2) {
+        System.out.println("");
         System.out.println(num1 + " * " + num2 + " = " + (num1 * num2));
         System.out.println("");
     }
@@ -134,6 +137,7 @@ public class CalculadoraMejorada {
         div = ((double) (num1) / (double) (num2));
         System.out.println(num1 + " / " + num2 + " = " + div);
         if (num2 == 0) {
+            System.out.println("");
             System.out.println("No se puede dividir entre cero. Resultado indeterminado");
         }
         System.out.println("");
