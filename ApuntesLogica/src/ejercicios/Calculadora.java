@@ -15,7 +15,7 @@ public class Calculadora {
     static Scanner read = new Scanner(System.in).useDelimiter("\n");
 
     public static void main(String[] args) {
-        
+
         inicioSesion();
     }
 
@@ -67,13 +67,12 @@ public class Calculadora {
                 break;
         }
     }
-    
+
     //Metodo para iniciar sesión
-    public static void inicioSesion(){
+    public static void inicioSesion() {
         String user = "admin";
         String password = "123456";
-        
-        
+
         System.out.println("********** INICIAR SESION **********");
         System.out.println("Ingrese usuario: ");
         String usuario = read.nextLine();
@@ -81,7 +80,7 @@ public class Calculadora {
         System.out.println("Ingrese contraseña: ");
         String contrasenha = read.nextLine();
         System.out.println("");
-        
+
         if (user.equals(usuario)) {
             if (password.equals(contrasenha)) {
                 System.out.println("********** Bievenido! **********");
@@ -94,9 +93,8 @@ public class Calculadora {
             System.out.println("Error en las credenciales, usuario ingresado no existe."
                     + " Acceso a la calculadora denegado!");
         }
-        
+
     }
-    
 
     //Función para sumar
     public static void sumar(int num1, int num2) {
