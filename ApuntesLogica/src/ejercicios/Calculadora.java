@@ -30,20 +30,31 @@ public class Calculadora {
         System.out.println("2. resta");
         System.out.println("3. multiplicación");
         System.out.println("4. división");
-        System.out.println("5. salir");
+        System.out.println("5. potencia");
+        System.out.println("6. raiz cuadrada");
+        System.out.println("7. salir");
         System.out.println("");
 
         System.out.println("Elija una opción: ");
         opcion = read.nextInt();
         System.out.println("");
 
-        if (opcion > 0 && opcion < 5) {
-            System.out.println("Ingrese número 1: ");
-            num1 = read.nextInt();
-            System.out.println("");
-            System.out.println("Ingrese número 2: ");
-            num2 = read.nextInt();
-            System.out.println("");
+        if (opcion > 0 && opcion <= 5) {
+            if (opcion == 5) {
+                System.out.println("Ingrese la base de la potencia: ");
+                num1 = read.nextInt();
+                System.out.println("");
+                System.out.println("Ingrese el exponente de la potencia: ");
+                num2 = read.nextInt();
+                System.out.println("");
+            } else {
+                System.out.println("Ingrese número 1: ");
+                num1 = read.nextInt();
+                System.out.println("");
+                System.out.println("Ingrese número 2: ");
+                num2 = read.nextInt();
+                System.out.println("");
+            }
         }
 
         switch (opcion) {
@@ -58,8 +69,14 @@ public class Calculadora {
                 break;
             case 4:
                 divi(num1, num2);
-                break;
+                break;                
             case 5:
+                potencia(num1, num2);
+                break;
+            case 6:
+                raizCuadrada();
+                break;
+            case 7:
                 System.out.println("Adiós");
                 break;
             default:
@@ -129,6 +146,52 @@ public class Calculadora {
         }
         System.out.println("");
 
+    }
+
+    //Metodo para calcular la raiz cuadrada
+    private static void raizCuadrada() {
+
+        System.out.println("Ingrese el número al que le quiere sacar raiz cuadrada");
+        int num1 = read.nextInt();
+
+        int conta = 1;
+        int resul;
+
+        int sqr = 0;
+
+        boolean exit = false;
+
+        while (exit == false && conta < num1) {
+            resul = num1 / conta;
+
+            if (resul == conta) {
+                sqr = resul;
+                exit = true;
+            } else {
+                sqr = 0;
+                conta++;
+                exit = false;
+            }
+        }
+
+        if (sqr != 0) {
+            System.out.println("raiz encontrada. Es igual a: " + sqr);
+        } else {
+            System.out.println("El número " + num1 + " no tiene raiz cuadrada exacta");
+        }
+    }
+    
+    //Metodo para calcular la potencia de un número
+    private static void potencia(int num1, int num2){
+        int conta = 1;
+        int result = 1;
+        
+        while (conta <= num2) {            
+            result = result * num1;  //result *= num1;
+            conta = conta + 1;  //conta++;
+        }
+        
+        System.out.println("El resultado es: " + result);
     }
 
 }

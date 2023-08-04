@@ -27,6 +27,7 @@ public class CalculadoraMejorada {
         String user = "admin";
         String password = "123456";
         int intentos = 3;
+        boolean ejecutado = false;
 
         do {
             System.out.println("********** INICIAR SESION **********");
@@ -44,6 +45,7 @@ public class CalculadoraMejorada {
                     System.out.println("");
                     menu();
                     intentos = 0;
+                    ejecutado = true;
                 } else {
                     System.out.println("Contraseña incorrecta...");
                     intentos--;
@@ -55,12 +57,20 @@ public class CalculadoraMejorada {
                 intentos--;
                 System.out.println("intentos restantes: " + intentos);
             }
+            
         } while (intentos > 0);
+        
+        if (!ejecutado) {
+            System.out.println();
+            System.out.println("**** Lo sentimos, se quedó sin intentos y "
+                    + "se le deniega el acceso. ****");
+            System.out.println();
+        }
 
     }
 
     //Metodo para el menú
-    public static void menu() {
+    private static void menu() {
 
         int opcion, num1 = 0, num2 = 0;
 
@@ -110,29 +120,29 @@ public class CalculadoraMejorada {
         } while (pass == false);
     }
 
-    //Función para sumar
-    public static void sumar(int num1, int num2) {
+    //Metodo para sumar
+    private static void sumar(int num1, int num2) {
         System.out.println("");
         System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
         System.out.println("");
     }
 
-    //Función para restar
-    public static void restar(int num1, int num2) {
+    //Metodo para restar
+    private static void restar(int num1, int num2) {
         System.out.println("");
         System.out.println(num1 + " - " + num2 + " = " + (num1 - num2));
         System.out.println("");
     }
 
-    //Función para multiplicar
-    public static void multi(int num1, int num2) {
+    //Metodo para multiplicar
+    private static void multi(int num1, int num2) {
         System.out.println("");
         System.out.println(num1 + " * " + num2 + " = " + (num1 * num2));
         System.out.println("");
     }
 
-    //Función para dividir
-    public static void divi(int num1, int num2) {
+    //Metodo para dividir
+    private static void divi(int num1, int num2) {
         double div;
 
         div = ((double) (num1) / (double) (num2));
@@ -146,7 +156,7 @@ public class CalculadoraMejorada {
     }
 
     //Función para validar ingreso de número
-    public static int validation(String cadena) {
+    private static int validation(String cadena) {
         int num = 0;
 
         do {
