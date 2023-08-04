@@ -123,7 +123,6 @@ public class CalculadoraMejorada {
                     break;
                 case 6:
                     raizCuadrada();
-                    System.out.println("");
                     break;
                 case 7:
                     System.out.println("Calculadora finalizada. Adios");
