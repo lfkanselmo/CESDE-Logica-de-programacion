@@ -50,16 +50,18 @@ public class CalculadoraMejorada {
                     System.out.println("Contraseña incorrecta...");
                     intentos--;
                     System.out.println("intentos restantes: " + intentos);
+                    System.out.println();
                 }
             } else {
                 System.out.println("Error en las credenciales, usuario ingresado no existe."
                         + " Acceso a la calculadora denegado!");
                 intentos--;
                 System.out.println("intentos restantes: " + intentos);
+                System.out.println();
             }
-            
+
         } while (intentos > 0);
-        
+
         if (!ejecutado) {
             System.out.println();
             System.out.println("**** Lo sentimos, se quedó sin intentos y "
@@ -82,15 +84,23 @@ public class CalculadoraMejorada {
             System.out.println("2. resta");
             System.out.println("3. multiplicación");
             System.out.println("4. división");
-            System.out.println("5. salir");
+            System.out.println("5. potencia");
+            System.out.println("6. raiz cuadrada");
+            System.out.println("7. salir");
             System.out.println("");
+            System.out.println("------------------------------------");
 
             opcion = validation("Elija una opción: ");
             System.out.println("");
 
-            if (opcion > 0 && opcion < 5) {
-                num1 = validation("Ingrese número 1: ");
-                num2 = validation("Ingrese número 2: ");
+            if (opcion > 0 && opcion <= 5) {
+                if (opcion == 5) {
+                    num1 = validation("Ingrese la base de la potencia: ");
+                    num2 = validation("Ingrese el exponente de la potencia: ");
+                } else {
+                    num1 = validation("Ingrese número 1: ");
+                    num2 = validation("Ingrese número 2: ");
+                }
             }
 
             pass = false;
@@ -109,6 +119,12 @@ public class CalculadoraMejorada {
                     divi(num1, num2);
                     break;
                 case 5:
+                    potencia(num1, num2);
+                    break;
+                case 6:
+                    raizCuadrada();
+                    break;
+                case 7:
                     System.out.println("Calculadora finalizada. Adios");
                     pass = true;
                     break;
@@ -173,6 +189,52 @@ public class CalculadoraMejorada {
         } while (pass == false);
 
         return num;
+    }
+    
+    //Metodo para calcular la raiz cuadrada
+    private static void raizCuadrada() {
+
+        System.out.println("Ingrese el número al que le quiere sacar raiz cuadrada");
+        int num1 = read.nextInt();
+
+        int conta = 1;
+        int resul;
+
+        int sqr = 0;
+
+        boolean exit = false;
+
+        while (exit == false && conta < num1) {
+            resul = num1 / conta;
+
+            if (resul == conta) {
+                sqr = resul;
+                exit = true;
+            } else {
+                sqr = 0;
+                conta++;
+                exit = false;
+            }
+        }
+
+        if (sqr != 0) {
+            System.out.println("raiz encontrada. Es igual a: " + sqr);
+        } else {
+            System.out.println("El número " + num1 + " no tiene raiz cuadrada exacta");
+        }
+    }
+    
+    //Metodo para calcular la potencia de un número
+    private static void potencia(int num1, int num2){
+        int conta = 1;
+        int result = 1;
+        
+        while (conta <= num2) {            
+            result *= num1;  //result = result * num1;
+            conta++;  //conta = conta + 1;
+        }
+        
+        System.out.println("El resultado es: " + result);
     }
 
 }

@@ -34,6 +34,7 @@ public class Calculadora {
         System.out.println("6. raiz cuadrada");
         System.out.println("7. salir");
         System.out.println("");
+        System.out.println("------------------------------------");
 
         System.out.println("Elija una opción: ");
         opcion = read.nextInt();
@@ -105,6 +106,7 @@ public class Calculadora {
                 menu();
             } else {
                 System.out.println("Contraseña incorrecta...");
+                System.out.println();
             }
         } else {
             System.out.println("Error en las credenciales, usuario ingresado no existe."
@@ -187,8 +189,8 @@ public class Calculadora {
         int result = 1;
         
         while (conta <= num2) {            
-            result = result * num1;  //result *= num1;
-            conta = conta + 1;  //conta++;
+            result *= num1;  //result = result * num1;
+            conta++;  //conta = conta + 1;
         }
         
         System.out.println("El resultado es: " + result);
