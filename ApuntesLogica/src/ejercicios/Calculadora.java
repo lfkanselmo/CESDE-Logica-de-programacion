@@ -154,7 +154,7 @@ public class Calculadora {
     private static void raizCuadrada() {
 
         System.out.println("Ingrese el número al que le quiere sacar raiz cuadrada");
-        int num1 = read.nextInt();
+        int num = read.nextInt();
 
         int conta = 1;
         int resul;
@@ -163,23 +163,25 @@ public class Calculadora {
 
         boolean exit = false;
 
-        while (exit == false && conta < num1) {
-            resul = num1 / conta;
+        while (exit == false && conta <= num) {
+            resul = num / conta;
 
             if (resul == conta) {
                 sqr = resul;
                 exit = true;
             } else {
-                sqr = 0;
+                sqr = -1;
                 conta++;
                 exit = false;
             }
         }
 
-        if (sqr != 0) {
-            System.out.println("raiz encontrada. Es igual a: " + sqr);
+        if (sqr > -1 && num >= 0) {
+            System.out.println(sqr);
+            System.out.println("raiz encontrada. Es igual a: " + sqr + " o " + (-1 * sqr));
         } else {
-            System.out.println("El número " + num1 + " no tiene raiz cuadrada exacta");
+            System.out.println(sqr);
+            System.out.println("El número " + num + " no tiene raiz cuadrada exacta");
         }
     }
     
