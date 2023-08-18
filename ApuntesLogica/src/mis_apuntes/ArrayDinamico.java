@@ -33,6 +33,7 @@ public class ArrayDinamico {
             System.out.println("1. Agregar nombres");
             System.out.println("2. Mostrar nombres");
             System.out.println("3. Salir");
+            System.out.println();
             String opc = read.next();
             read.skip("\n");
 
