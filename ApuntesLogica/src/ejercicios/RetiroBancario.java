@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author 503
+ * @author Krausser
  */
 public class RetiroBancario {
 
