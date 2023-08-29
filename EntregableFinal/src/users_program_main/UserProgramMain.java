@@ -262,7 +262,7 @@ public class UserProgramMain {
         }
     }
 
-    //metodo para el menu
+    //metodo para el acciones cuando se inicia sesión
     private static void menu(String[] userE) {
 
         System.out.println("************ BIENVENIDO ************");
@@ -277,7 +277,7 @@ public class UserProgramMain {
             System.out.println("1. Agregar nombres");
             System.out.println("2. Mostrar nombres");
             System.out.println("3. Eliminar nombre");
-            System.out.println("4. Salir");
+            System.out.println("4. Cerrar sesión");
             System.out.println();
             opc = read.next();
             read.skip("\n");
@@ -295,7 +295,11 @@ public class UserProgramMain {
 
                 case "3":
                     if (userE[2].equals("Administrador")) {
-                        deleteName(userE[0]);
+                        if (!names.isEmpty()){
+                            deleteName(userE[0]);
+                        } else{
+                            System.out.println("no se ha creado ningún nombre todavia");
+                        }
                     } else {
                         System.out.println("Solo los usuarios tipo administrador puede eliminar nombres");
                     }
