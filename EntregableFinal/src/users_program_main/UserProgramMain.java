@@ -82,8 +82,8 @@ public class UserProgramMain {
     }
 
     //Metodo para administrar los usuarios
-    private static void adminUsers(String masPas, String option) {
-        if (masPas.equals(passwordMaster)) {
+    private static void adminUsers(String masterPas, String option) {
+        if (masterPas.equals(passwordMaster)) {
 
             switch (option) {
                 //para crear usuario
@@ -135,7 +135,7 @@ public class UserProgramMain {
                     }
 
                     break;
-
+                //para eliminar usuario
                 case "delete":
                     System.out.println("Ingrese el usuario que desea eliminar");
                     userIngres = read.nextLine();
@@ -155,15 +155,15 @@ public class UserProgramMain {
 
                                 while (it.hasNext()) {
                                     String[] aux = (String[]) it.next();
-                                    System.out.println(aux[0]);
 
                                     if (aux[1].equals(userE[0])) {
+                                        System.out.println("Nombre " + aux[0] + " eliminado");
                                         it.remove();
                                     }
                                 }
 
                                 users.remove(userE);
-
+                                System.out.println("----------------------------");
                                 System.out.println("Usuario eliminado con exito");
                                 break;
                             } else {
@@ -187,7 +187,7 @@ public class UserProgramMain {
             }
 
         } else {
-
+            System.out.println("Contraseña maestra incorrecta");
         }
     }
 
@@ -247,8 +247,10 @@ public class UserProgramMain {
                         menu(userE);
                         break;
                     } else {
+                        System.out.println();
                         System.out.println("Contraseña incorrecta");
                         found = true;
+                        break;
                     }
 
                 }
@@ -262,7 +264,7 @@ public class UserProgramMain {
         }
     }
 
-    //metodo para el acciones cuando se inicia sesión
+    //metodo para las acciones cuando se inicia sesión
     private static void menu(String[] userE) {
 
         System.out.println("************ BIENVENIDO ************");
