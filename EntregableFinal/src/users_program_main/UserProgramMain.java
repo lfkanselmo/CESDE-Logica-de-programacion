@@ -30,6 +30,7 @@ public class UserProgramMain {
         menuUsers();
     }
 
+
     //Menu para los usuarios
     private static void menuUsers() {
 
@@ -126,7 +127,7 @@ public class UserProgramMain {
                         System.out.println("Ingrese contraseña");
                         user[1] = read.nextLine();
 
-                        System.out.println("");
+                        System.out.println();
                         user[2] = userType();
 
                         users.add(user);
@@ -137,44 +138,47 @@ public class UserProgramMain {
                     break;
                 //para eliminar usuario
                 case "delete":
-                    System.out.println("Ingrese el usuario que desea eliminar");
-                    userIngres = read.nextLine();
+                    if (users.isEmpty()) {
+                        System.out.println("No existen usuarios para eliminar");
+                    } else {
+                        System.out.println("Ingrese el usuario que desea eliminar");
+                        userIngres = read.nextLine();
 
-                    found = false;
+                        found = false;
 
-                    for (String[] userE : users) {
-                        if (userE[0].equals(userIngres)) {
-                            found = true;
-                            System.out.println("¿Está seguro de eliminar al usuario " + userE[0] + "? Ingrese S si desea eliminarlo");
-                            System.out.println("Todos los nombres que fueron creados por el usuario " + userIngres + " serán eliminados también");
-                            String answer = read.next();
-                            if (answer.equalsIgnoreCase("s")) {
+                        for (String[] userE : users) {
+                            if (userE[0].equals(userIngres)) {
+                                found = true;
+                                System.out.println("¿Está seguro de eliminar al usuario " + userE[0] + "? Ingrese S si desea eliminarlo");
+                                System.out.println("Todos los nombres que fueron creados por el usuario " + userIngres + " serán eliminados también");
+                                String answer = read.next();
+                                if (answer.equalsIgnoreCase("s")) {
 
-                                //Eliminar todos los nombres que fueron creados por ese usuario
-                                Iterator it = names.iterator();
+                                    //Eliminar todos los nombres que fueron creados por ese usuario
+                                    Iterator<String[]> it = names.iterator();
 
-                                while (it.hasNext()) {
-                                    String[] aux = (String[]) it.next();
+                                    while (it.hasNext()) {
+                                        String[] aux = it.next();
 
-                                    if (aux[1].equals(userE[0])) {
-                                        System.out.println("Nombre " + aux[0] + " eliminado");
-                                        it.remove();
+                                        if (aux[1].equals(userE[0])) {
+                                            System.out.println("Nombre " + aux[0] + " eliminado");
+                                            it.remove();
+                                        }
                                     }
-                                }
 
-                                users.remove(userE);
-                                System.out.println("----------------------------");
-                                System.out.println("Usuario eliminado con exito");
-                                break;
-                            } else {
-                                System.out.println("Usuario no fue eliminado");
+                                    users.remove(userE);
+                                    System.out.println("----------------------------");
+                                    System.out.println("Usuario eliminado con exito");
+                                } else {
+                                    System.out.println("Usuario no fue eliminado");
+                                }
                                 break;
                             }
                         }
-                    }
 
-                    if (!found) {
-                        System.out.println("El usuario ingresado no existe");
+                        if (!found) {
+                            System.out.println("El usuario ingresado no existe");
+                        }
                     }
 
                     break;
@@ -243,8 +247,8 @@ public class UserProgramMain {
                     String passLogin = read.nextLine();
 
                     if (userE[1].equals(passLogin)) {
-                        found = true;
                         menu(userE);
+                        found = true;
                         break;
                     } else {
                         System.out.println();
@@ -297,9 +301,9 @@ public class UserProgramMain {
 
                 case "3":
                     if (userE[2].equals("Administrador")) {
-                        if (!names.isEmpty()){
+                        if (!names.isEmpty()) {
                             deleteName(userE[0]);
-                        } else{
+                        } else {
                             System.out.println("no se ha creado ningún nombre todavia");
                         }
                     } else {
@@ -314,7 +318,7 @@ public class UserProgramMain {
                     System.out.println("*********** CERRANDO SESION ************");
                     break;
                 default:
-                    System.out.println("Opción no valida");
+                    System.out.println("Opción no válida");
                     break;
             }
         } while (exit);
@@ -347,14 +351,11 @@ public class UserProgramMain {
         opc = read.next().toUpperCase();
         read.skip("\n");
 
-        switch (opc) {
-            case "S":
-                con = true;
-                break;
-            default:
-                System.out.println("*********** FIN INGRESO DE NOMBRES ***********");
-                con = false;
-                break;
+        if(opc.equalsIgnoreCase("s")){
+            con = true;
+        } else {
+            System.out.println("*********** FIN INGRESO DE NOMBRES ***********");
+            con = false;
         }
 
         return con;
@@ -403,6 +404,7 @@ public class UserProgramMain {
                     }
                     break;
                 }
+
             }
         }
 
